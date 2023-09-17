@@ -3,6 +3,7 @@
 import glob
 # import re
 
+
 print('start execution')
 # 現在のディレクトリ内のすべての.txtファイルを取得
 txt_files = glob.glob('*.txt')
