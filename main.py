@@ -1,7 +1,7 @@
 # import sys
 # import os
 import glob
-import re
+# import re
 
 print('start execution')
 # 現在のディレクトリ内のすべての.txtファイルを取得
