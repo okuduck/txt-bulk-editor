@@ -2,11 +2,12 @@ import glob
 import os
 
 # 現在のディレクトリ内のすべての.txtファイルを取得
-txt_files = glob.glob('*.txt')
+# txt_files = glob.glob('*.txt')
 # strings_to_remove = deleted_words
 
 def deleteWordsInBulk(strings_to_remove, folder_path):
-    txt_files = glob.glob(folder_path + '/*.txt')
+    directory_path = os.path.dirname(folder_path)
+    txt_files = glob.glob(directory_path + '/*.txt')
   
     # テキストファイルを順番に読み込む
     for txt_file in txt_files:
