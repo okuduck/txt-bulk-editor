@@ -1,0 +1,1 @@
+deleted_words = ["hair", "eye", "highs", "ahoge", "skirt", "chibi", "blush stickers", "uniform", "sleeves", "standing", "legwear", "shirt"]

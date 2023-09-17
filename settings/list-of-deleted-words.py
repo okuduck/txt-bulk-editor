@@ -1,1 +1,0 @@
-delete_word_list = ["hair", ""]

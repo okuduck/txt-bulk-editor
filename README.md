@@ -33,3 +33,6 @@ git pull
 git add .
 git commit -m "message"
 git push origin main
+
+# .envファイルの読み込み
+pip install python-dotenv
