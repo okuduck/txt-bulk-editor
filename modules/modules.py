@@ -5,6 +5,7 @@ import os
 # txt_files = glob.glob('*.txt')
 # strings_to_remove = deleted_words
 
+# 指定したディレクトリに存在するすべてのtxtファイルから、特定の単語を削除する。
 def deleteWordsInBulk(strings_to_remove, folder_path):
     directory_path = os.path.dirname(folder_path)
     txt_files = glob.glob(directory_path + '/*.txt')

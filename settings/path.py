@@ -1,1 +1,0 @@
-path_to_txtFolder="C:\Users\allee\Documents\TrainingData\sozai"

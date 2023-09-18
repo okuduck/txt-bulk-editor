@@ -1,6 +1,6 @@
-from modules.bulk_delete import deleteWordsInBulk
-from settings.deleted_words import deleted_words
-from settings.path import path_to_txtFolder
+from modules.modules import deleteWordsInBulk
+from settings.settings import strings_to_remove, folder_path
+
 
 print('start execution')
-deleteWordsInBulk(deleted_words, path_to_txtFolder)
+deleteWordsInBulk(strings_to_remove, folder_path)
