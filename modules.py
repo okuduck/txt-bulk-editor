@@ -1,11 +1,29 @@
 import glob
 import os
 
-# 単語の削除
+# 指定したディレクトリに存在するすべてのtxtファイルから、特定の単語を削除する。
 class DeletedWordsValues:
     def __init__(self, value1, value2):
         self.remained = value1
         self.deleted = value2
+def delete_words(strings_to_remove, original_strings):
+   
+            with open(txt_file, 'r') as file:
+                file_contents = file.read()
+                # 文字列の分割
+                contents_list = file_contents.split(",")
+                # 各文字列の前後の空白を削除
+                editted_contents_list = [c.strip() for c in contents_list] 
+                # 単語の削除
+                filtered_array = remove_partial_matches(editted_contents_list, strings_to_remove)
+                # 各文字列の前後の空白を削除
+                stripped_editted_list = [n.strip() for n in filtered_array]
+                new_contents = ', '.join([str(item) for item in stripped_editted_list])
+                # ファイルの更新
+                with open(txt_file, 'w') as file:
+                    file.write(new_contents)
+
+# 単語の削除
 def delete_words(arr1, arr2):
     remained = []
     deleted = []
@@ -50,7 +68,7 @@ def remove_duplicate_elements(original_list):
     [unique_list.append(item) for item in original_list if item not in unique_list]
     return unique_list
 
-# 配列の各要素を整形して、改行で区切った文字列に変換
+# 配列の各要素を整形して、改行で文字列に変換
 def convert_array_into_string(original):
     editted_array = [o.strip() for o in original]
     new_string = '\n'.join([str(item) for item in editted_array])

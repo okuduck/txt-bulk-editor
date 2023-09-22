@@ -19,10 +19,15 @@ for txt_file in txt_files:
             # 元ファイルの配列から、指定した単語を削除
             result = delete_words(arr1 = editted_contents_list, arr2 = strings_to_remove)
             # 配列を改行のある文字列に変換
+            # strings_for_txt = convert_array_into_string(result.remained, ', ')
             remained = convert_array_into_string(result.remained)
             deleted = convert_array_into_string(result.deleted)
             # ファイルの上書き
             with open(txt_file, 'w') as outfile:
+                editted_array = [o.strip() for o in result.remained]
+                new_string = '\n'.join([str(item) for item in editted_array])
+                outfile.write(new_string)
+            with open(remained_strings_path, 'a') as outfile:
                 outfile.write(remained)
             with open(deleted_strings_path, 'a') as outfile:
                 outfile.write(deleted)
