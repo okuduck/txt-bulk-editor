@@ -1,42 +1,34 @@
 import glob
 import os
+import re
 
-# 指定したディレクトリに存在するすべてのtxtファイルから、特定の単語を削除する。
+# 単語の削除
 class DeletedWordsValues:
     def __init__(self, value1, value2):
         self.remained = value1
         self.deleted = value2
-def delete_words(strings_to_remove, original_strings):
-   
-            with open(txt_file, 'r') as file:
-                file_contents = file.read()
-                # 文字列の分割
-                contents_list = file_contents.split(",")
-                # 各文字列の前後の空白を削除
-                editted_contents_list = [c.strip() for c in contents_list] 
-                # 単語の削除
-                filtered_array = remove_partial_matches(editted_contents_list, strings_to_remove)
-                # 各文字列の前後の空白を削除
-                stripped_editted_list = [n.strip() for n in filtered_array]
-                new_contents = ', '.join([str(item) for item in stripped_editted_list])
-                # ファイルの更新
-                with open(txt_file, 'w') as file:
-                    file.write(new_contents)
-
-# 単語の削除
 def delete_words(arr1, arr2):
     remained = []
     deleted = []
     for item1 in arr1:
-        is_partial_match = False
-        for item2 in arr2:
-            if item2 in item1:
-                is_partial_match = True
-                deleted.append(item2)
-                break
-        if not is_partial_match:
-            remained.append(item1)
-    return DeletedWordsValues(remained, deleted)
+        item1 = item1.strip()
+        if item1:
+            is_partial_match = False
+            for item2 in arr2:
+                item2 = item2.strip()
+                if item2:
+                    text = item1
+                    pattern = r'\b' + re.escape(item2) + r'\b'
+                    print('pattrem', pattern)
+                    match = re.search(pattern, text)
+                    if match:
+                        is_partial_match = True
+                        deleted.append(item1)
+                        break
+            if not is_partial_match:
+                remained.append(item1)
+    editted_deleted = remove_duplicate_elements(deleted)
+    return DeletedWordsValues(remained, editted_deleted)
             
 # ファイルからデータを読み取り、コンマごとに改行してリストに格納する関数
 def read_data_from_txt_file(file_path):
@@ -45,8 +37,6 @@ def read_data_from_txt_file(file_path):
             data = file.read().strip()  # ファイルからテキストを読み取る
             data_list = data.split('\n')  # 改行文字で分割してリストに変換
             data_list = [item.strip(',') for item in data_list]  # コンマを削除
-            if data_list: # アルファベット順に並び替え
-                sort_strings_in_file(data_list=data_list, file_path=file_path)
             return data_list
     except FileNotFoundError:
         print(f"ファイル '{file_path}' が見つかりません。")
