@@ -16,10 +16,13 @@ def delete_words(arr1, arr2):
             is_partial_match = False
             for item2 in arr2:
                 item2 = item2.strip()
-                if item2:
+                if item1 == item2:
+                    is_partial_match = True
+                    deleted.append(item1)
+                    break
+                else:
                     text = item1
                     pattern = r'\b' + re.escape(item2) + r'\b'
-                    print('pattrem', pattern)
                     match = re.search(pattern, text)
                     if match:
                         is_partial_match = True
