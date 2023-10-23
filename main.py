@@ -6,7 +6,7 @@ import os
 sys.dont_write_bytecode = True
 
 from modules import read_data_from_txt_file, sort_strings_in_file, delete_words, convert_array_into_string
-from modules_for_change_scale import downscale_images
+from modules_for_change_scale import downscale_images, upscale_images
 from dotenv import load_dotenv
 
 # .envから設定情報を取得
@@ -97,6 +97,6 @@ else:
     elif function_name == 'downscale_images':
         downscale_images(folder_path, folder_path, 512)
     elif function_name == 'upscale_images':
-        downscale_images(folder_path, folder_path, 1024)
+        upscale_images(folder_path, folder_path, 1024)
     else:
         print("指定した関数が見つかりません")

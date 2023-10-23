@@ -30,6 +30,10 @@ delete_words_from_txt
 -> strings_to_remove.txtで指定した文字列をフォルダ内のファイルから一括削除
 join_commandline
 -> .txtフォルダの分割されたコマンドラインを結合して、ターミナルに出力
+upscale_images
+-> 画像を一括でスケールアップし、縦横1024pxにする。
+downscale_images
+-> 画像を一括でスケールダウンし、縦横512pxにする。
 
 
 # 実装関連
