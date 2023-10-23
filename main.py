@@ -1,8 +1,18 @@
 import glob
 import sys
 import os
+
+# pucacheを生成しないように設定
+sys.dont_write_bytecode = True
+
 from modules import read_data_from_txt_file, sort_strings_in_file, delete_words, convert_array_into_string
-from settings import folder_path, path_to_split_commandline
+from modules_for_change_scale import downscale_images
+from dotenv import load_dotenv
+
+# .envから設定情報を取得
+load_dotenv()
+folder_path = os.getenv('PATH_TO_TAG_FOLDER')
+path_to_split_commandline = os.getenv('PATH_TO_SPLIT_COMMANDLINE')
 
 def delete_words_from_txt():
     print('start execution')
@@ -73,9 +83,9 @@ def join_commandline():
         commandline_string = " ".join(stripped_list)
         print('commandline_string: ', commandline_string)
 
-
+# どの関数を実行するか
 if len(sys.argv) != 2:
-    print("使い方: python script.py 関数名")
+    print("使い方: python main.py {関数名}")
 else:
     function_name = sys.argv[1]
     if function_name == 'delete_txt_files':
@@ -84,5 +94,9 @@ else:
         delete_words_from_txt()
     elif function_name == 'join_commandline':
         join_commandline()
+    elif function_name == 'downscale_images':
+        downscale_images(folder_path, folder_path, 512)
+    elif function_name == 'upscale_images':
+        downscale_images(folder_path, folder_path, 1024)
     else:
         print("指定した関数が見つかりません")
