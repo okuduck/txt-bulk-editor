@@ -5,7 +5,7 @@ import re
 # 単語の削除
 class DeletedWordsValues:
     def __init__(self, value1, value2):
-        self.remained = value1
+        self.remaained = value1
         self.deleted = value2
 def delete_words(arr1, arr2):
     remained = []
@@ -20,14 +20,14 @@ def delete_words(arr1, arr2):
                     is_partial_match = True
                     deleted.append(item1)
                     break
-                else:
-                    text = item1
-                    pattern = r'\b' + re.escape(item2) + r'\b'
-                    match = re.search(pattern, text)
-                    if match:
-                        is_partial_match = True
-                        deleted.append(item1)
-                        break
+                # else:
+                #     text = item1
+                #     pattern = r'\b' + re.escape(item2) + r'\b'
+                #     match = re.search(pattern, text)
+                #     if match:
+                #         is_partial_match = True
+                #         deleted.append(item1)
+                #         break
             if not is_partial_match:
                 remained.append(item1)
     editted_deleted = remove_duplicate_elements(deleted)

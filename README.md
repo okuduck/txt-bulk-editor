@@ -1,6 +1,6 @@
 # Pythonのインストール
 
-HomeBrewのインストーる
+HomeBrewの
 pyenvのインストール
 
 ls -a
