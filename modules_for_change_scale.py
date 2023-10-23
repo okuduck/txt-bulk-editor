@@ -19,7 +19,7 @@ def downscale_image(input_path, output_path, scale_factor):
     # width, height = image.size
     new_width = int(scale_factor)
     new_height = int(scale_factor)
-    downscaled_image = image.resize((new_width, new_height), Image.ANTIALIAS)
+    downscaled_image = image.resize((new_width, new_height), Image.BILINEAR)
 
     # ダウンスケール後の画像を保存
     downscaled_image.save(output_path)
@@ -41,7 +41,7 @@ def upscale_image(input_path, output_path, scale_factor):
     # width, height = image.size
     new_width = int(scale_factor)
     new_height = int(scale_factor)
-    downscaled_image = image.resize((new_width, new_height), Image.ANTIALIAS)
+    downscaled_image = image.resize((new_width, new_height), Image.BILINEAR)
 
     # ダウンスケール後の画像を保存
     downscaled_image.save(output_path)
